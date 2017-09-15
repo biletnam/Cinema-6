@@ -8,33 +8,46 @@
 
 class Room
 {
-    private $listSeat;
+    private $listVertical;
+    private $listHorizontal;
 
     public function __construct()
     {
-        $this->listSeat = array();
+        $this->listVertical = array();
+        $this->listHorizontal = array();
     }
 
     public function generateVertical()
     {
-        for($i = 0x41; $i < 0x52; $i++)
+        for($i = 65; $i < 77; $i++)
         {
-            $this->generateHorizontal(chr($i));
+            $this->setList($this->listVertical, chr($i));
         }
     }
 
-    private function generateHorizontal($vertical)
+    public function generateHorizontal()
     {
-        $tmpArray = array();
         for($i = 1; $i < 17; $i++)
         {
-            array_push($tmpArray, $vertical.$i);
+            $this->setList($this->listHorizontal, $i);
         }
-        array_push($this->listSeat, $tmpArray);
     }
 
-    public function getListSeat()
+    private function setList(&$array, $value)
     {
-        return $this->listSeat;
+        array_push($array, $value);
+    }
+
+    public function getListVertical()
+    {
+        return $this->listVertical;
+    }
+
+    /**
+     * @return array
+     */
+    public function getListHorizontal()
+    {
+        return $this->listHorizontal;
     }
 }

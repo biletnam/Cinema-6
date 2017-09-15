@@ -1,0 +1,22 @@
+.seat
+{
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    background-color: #42EEF4;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    border-radius: 15px;
+}
+
+input[type=radio]
+{
+    display: none;
+}
+
+.seat:hover
+{
+    background-color: #0000FF;
+}
