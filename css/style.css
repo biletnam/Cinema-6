@@ -4,11 +4,12 @@
     width: 30px;
     height: 30px;
     margin: 5px;
-    background-color: #42EEF4;
     text-align: center;
     display: table-cell;
     vertical-align: middle;
     border-radius: 15px;
+    cursor: pointer;
+    background-color: #42EEF4;
 }
 
 input[type=radio]
@@ -16,7 +17,6 @@ input[type=radio]
     display: none;
 }
 
-.seat:hover
-{
-    background-color: #0000FF;
+.seat :hover {
+    background-color: #0000FF;;
 }
