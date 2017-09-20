@@ -14,7 +14,6 @@ class ListReservation
 
     public function __construct($idSeance = 1)
     {
-        require_once "Reservation.php";
         $this->listReservation = array();
 
         $this->idSeance = $idSeance;
