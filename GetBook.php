@@ -11,9 +11,9 @@
         exit();
     }
 
-    require_once "Book/Booking.php";
-    $book = new Booking();
-    $book->addReservation($_POST['seatSit']);
+    require_once "CheckSeat.php";
+    $book = new CheckSeat();
+    $book->addReservation(1, 2, $_POST['seatSit']);
 
     unset($_POST['seatSit']);
 ?>

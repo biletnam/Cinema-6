@@ -6,26 +6,28 @@
  * Time: 19:40
  */
 
-class Booking
+class CheckSeat
 {
     public function __construct()
     {
         session_start();
     }
 
-    public function addReservation($seat)
+    public function addReservation($idSeance, $idUser, $seat)
     {
-        sleep(10);
         if($this->check($seat))
         {
-            ;
+            require_once "AddBooking.php";
+            $add = new AddBooking();
+
+            $add->AddSeat($idSeance, $idUser, $seat);
         }
         else
         {
             $_SESSION['errorSeat'] = "To miejsce jest już zajęte";
-            header('Location: index.php');
-            exit();
         }
+        header('Location: index.php');
+        exit();
     }
 
     private function check($checkSeat)

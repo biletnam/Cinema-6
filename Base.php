@@ -18,10 +18,9 @@ abstract class Base
 
     private function connect()
     {
-        require_once "Base/config.php";
         try
         {
-            $this->Base = new mysqli($db_host, $db_user, $db_pass, $db_name);
+            $this->Base = new mysqli("127.0.0.1", "root", "nhy6&UJM", "cinema");
 
             if($this->Base->connect_errno != 0)
             {
