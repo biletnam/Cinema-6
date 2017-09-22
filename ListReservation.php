@@ -21,14 +21,15 @@ class ListReservation
 
     public function setList()
     {
-        require_once "Base/Base.php";
-        require_once "Base/Select.php";
+        require_once "Base.php";
+        require_once "Select.php";
+
         $this->base = new Select();
         $quary = $this->base->query("Booking", "IdSeance = $this->idSeance", "FreeSeat");
 
         if($quary->num_rows > 0)
         {
-            while ($line = $quary->fetch_assoc())
+            while  ($line = $quary->fetch_assoc())
             {
                 $this->addElementList($line['FreeSeat']);
             }
