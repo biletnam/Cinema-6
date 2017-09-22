@@ -14,8 +14,8 @@
                  * Date: 12.09.17
                  * Time: 19:39
                  */
-                require_once "Book/Room.php";
-                require_once "Book/ListReservation.php";
+                require_once "Room.php";
+                require_once "ListReservation.php";
                 session_start();
                 $block = array(5, 13);
                 $roomCinema = new Room();

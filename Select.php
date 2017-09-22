@@ -5,7 +5,6 @@
  * Date: 16.09.17
  * Time: 11:56
  */
-
 class Select extends Base
 {
     public function __construct()
