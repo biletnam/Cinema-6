@@ -21,8 +21,19 @@ class AddBooking
     public function AddSeat($idSeance, $idUser, $seat)
     {
         $this->base->query("Booking", "IdSeance, IdUser, FreeSeat", "$idSeance, $idUser, '$seat'");
+        $this->BusySeat($idSeance);
 
         $this->base->closeBase();
+    }
+
+    private function BusySeat($idSeance)
+    {
+        require_once "Update.php";
+        $baseTmp = new Update();
+
+        $baseTmp->query("Seance", "idSeance = $idSeance", "BusySeat = BusySeat + 1");
+
+        $baseTmp->closeBase();
     }
 }
 ?>
