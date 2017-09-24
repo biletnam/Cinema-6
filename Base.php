@@ -8,7 +8,7 @@
 
 abstract class Base
 {
-    private $Base;
+    protected $Base;
     public function __construct()
     {
         mysqli_report(MYSQLI_REPORT_STRICT);
@@ -20,7 +20,7 @@ abstract class Base
     {
         try
         {
-            $this->Base = new mysqli("127.0.0.1", "root", "nhy6&UJM", "cinema");
+            $this->Base = new mysqli("127.0.0.1", "cinema", "Qwerty123", "cinema");
 
             if($this->Base->connect_errno != 0)
             {
@@ -29,16 +29,31 @@ abstract class Base
         }
         catch (Exception $e)
         {
-            echo "Spróbuj zarezerwować miejsce w innym terminie".$e;
+            echo "Spróbuj zarezerwować miejsce w innym terminie";
         }
     }
 
-    abstract public function query($where, $when, $what);
-
-    function getBase()
+    public function query($where, $when, $what)
     {
-        return $this->Base;
+        $sql = $this->sqlCode($where, $when, $what);
+
+        try
+        {
+            $query = $this->Base->query($sql);
+
+            if(!$query)
+            {
+                throw new Exception();
+            }
+            return $query;
+        }
+        catch (Exception $e)
+        {
+            return false;
+        }
     }
+
+    abstract protected function sqlCode($where, $when, $what);
 
     public function closeBase()
     {

@@ -25,6 +25,7 @@ class ListReservation
         require_once "Select.php";
 
         $this->base = new Select();
+
         $quary = $this->base->query("Booking", "IdSeance = $this->idSeance", "FreeSeat");
 
         if($quary->num_rows > 0)

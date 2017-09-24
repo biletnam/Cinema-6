@@ -12,6 +12,7 @@ class AddBooking
 
     public function __construct()
     {
+        session_start();
         require_once "Base.php";
         require_once "Insert.php";
 
@@ -20,8 +21,15 @@ class AddBooking
 
     public function AddSeat($idSeance, $idUser, $seat)
     {
-        $this->base->query("Booking", "IdSeance, IdUser, FreeSeat", "$idSeance, $idUser, '$seat'");
-        $this->BusySeat($idSeance);
+        if(($this->base->query("Booking", "IdSeance, IdUser, FreeSeat", "$idSeance, $idUser, '$seat'"))
+            | ($this->BusySeat($idSeance)))
+        {
+            ;
+        }
+        else
+        {
+            $_SESSION['errorBase'] = "Nastąpił problem z rezerwacją miejsca";
+        }
 
         $this->base->closeBase();
     }
@@ -31,7 +39,14 @@ class AddBooking
         require_once "Update.php";
         $baseTmp = new Update();
 
-        $baseTmp->query("Seance", "idSeance = $idSeance", "BusySeat = BusySeat + 1");
+        if($baseTmp->query("Seance", "idSeance = $idSeance", "BusySeat = BusySeat + 1"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 
         $baseTmp->closeBase();
     }

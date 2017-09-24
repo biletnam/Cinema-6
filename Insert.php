@@ -13,22 +13,8 @@ class Insert extends Base
         parent::__construct();
     }
 
-    public function query($where, $when, $what)
+    public function sqlCode($where, $when, $what)
     {
-        $sql = "INSERT INTO $where ($when) VALUES ($what)";
-
-        try
-        {
-            $query = $this->getBase()->query($sql);
-
-            if(!$query)
-            {
-                throw new Exception();
-            }
-        }
-        catch (Exception $e)
-        {
-            $_SESSION['errorSeat'] = "Nastąpił problem z rezerwacją miejsc";
-        }
+        return "INSERT INTO $where ($when) VALUES ($what)";
     }
 }

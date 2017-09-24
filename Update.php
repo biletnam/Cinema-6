@@ -13,18 +13,9 @@ class Update extends Base
         parent::__construct();
     }
 
-    public function query($where, $when, $what)
+    public function sqlCode($where, $when, $what)
     {
-        $sql = "UPDATE $where SET $what WHERE $when";
-
-        try
-        {
-            $this->getBase()->query($sql);
-        }
-        catch (Exception $e)
-        {
-            $_SESSION['error'] = 'Nastąpił problem z bazą danych';
-        }
+        return "UPDATE $where SET $what WHERE $when";
     }
 }
 ?>
