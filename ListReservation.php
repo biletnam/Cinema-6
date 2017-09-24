@@ -6,16 +6,14 @@
  * Time: 22:08
  */
 
-class ListReservation
+class ListReservation extends Roster
 {
-    private $listReservation;
     private $base;
     private $idSeance;
 
     public function __construct($idSeance = 1)
     {
-        $this->listReservation = array();
-
+        parent::__construct();
         $this->idSeance = $idSeance;
     }
 
@@ -36,16 +34,6 @@ class ListReservation
             }
         }
         $this->base->closeBase();
-    }
-
-    private function addElementList($seat)
-    {
-        array_push($this->listReservation, $seat);
-    }
-
-    public function getList()
-    {
-        return $this->listReservation;
     }
 }
 ?>

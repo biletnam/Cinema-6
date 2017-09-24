@@ -32,6 +32,7 @@ class CheckSeat
 
     private function check($checkSeat)
     {
+        require_once "Roster.php";
         require_once "ListReservation.php";
 
         $list = new ListReservation();
