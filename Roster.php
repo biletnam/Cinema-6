@@ -6,7 +6,7 @@
  * Time: 5:38 PM
  */
 
-class Roster
+abstract class Roster
 {
     protected $listReservation;
 
@@ -15,9 +15,11 @@ class Roster
         $this->listReservation = array();
     }
 
-    protected function addElementList($seat)
+    abstract public function setList();
+
+    protected function addElementList($element)
     {
-        array_push($this->listReservation, $seat);
+        array_push($this->listReservation, $element);
     }
 
     public function getList()
