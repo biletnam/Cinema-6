@@ -4,6 +4,7 @@
         <meta charset="utf-8"/>
         <title>Cinema</title>
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/seance.css">
     </head>
     <body>
     <?php
@@ -19,5 +20,6 @@
         }
 
     ?>
+    <script type="text/javascript" src="script/focusChoseSeance.js"></script>
     </body>
 </html>

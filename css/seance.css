@@ -1,0 +1,51 @@
+.seance
+{
+    border: 1px solid #000000;
+    width: 70%;
+}
+
+.poster
+{
+    float: left;
+    margin: 1%;
+}
+
+.poster > img
+{
+    height: 100px;
+}
+
+.film
+{
+    float: left;
+    margin: 3%;
+    margin-left: 1.5%;
+}
+
+.titleFilm
+{
+    font-size: 150%;
+}
+
+.describeFilm
+{
+    font-size: 70%;
+}
+
+.describe
+{
+    margin: 1%;
+    margin-left: 2%;
+}
+
+.dataSeance
+{
+    margin: 1%;
+}
+
+.button
+{
+    float: right;
+    margin: 2%;
+    margin-top: 5%;
+}
