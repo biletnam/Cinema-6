@@ -13,10 +13,8 @@ class Seance
     private $nrRoom;
     private $dataStart;
     private $dataFreeHall;
-    private $busySeat;
 
-
-    public function __construct($idSeance, $film, $nrRoom, $busySeat, $dataStart, $dataFreeHall)
+    public function __construct($idSeance, $film, $nrRoom, $dataStart, $dataFreeHall)
     {
         require_once "Film.php";
 
@@ -25,7 +23,6 @@ class Seance
         $this->setNrRoom($nrRoom);
         $this->setDataStart($dataStart);
         $this->setDataFreeHall($dataFreeHall);
-        $this->setBusySeat($busySeat);
     }
 
     /**
@@ -69,14 +66,6 @@ class Seance
     }
 
     /**
-     * @param mixed $busySeat
-     */
-    public function setBusySeat($busySeat)
-    {
-        $this->busySeat = $busySeat;
-    }
-
-    /**
      * @return mixed
      */
     public function getIdSeance()
@@ -114,14 +103,6 @@ class Seance
     public function getDataFreeHall()
     {
         return $this->dataFreeHall;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getBusySeat()
-    {
-        return $this->busySeat;
     }
 
     public function __toString()
@@ -192,8 +173,8 @@ class Seance
     }
     private function definitionButton()
     {
-        return '<div class="button"><form><input type="hidden" value="1"><input type="submit" value="Wybierz miejsce" '.
-        'id="submit"></form></div>';
+        return '<div class="button"><form><input type="hidden" value="1" id="idSeance"><input type="submit" value="Wybierz miejsce" '.
+        'id="submit" onclick=""></form></div>';
     }
     private function definitionDivClear()
     {

@@ -23,8 +23,8 @@ class ListSeance extends Roster
 
         $query = $this->base->query("Seance, Film, Directory, TypeFilm",
             "Seance.IdFilm = Film.IdFilm AND Film.IdDirectory = Directory.IdDirectory AND ".
-            "Film.IdTypeFilm = TypeFilm.IdTypeFilm AND DataStartFilm > now() + INTERVAL 15 MINUTE",
-            "Seance.IdSeance, Seance.NrRoom, Seance.DataStartFilm, Seance.DataEndFilm, Seance.BusySeat, ".
+            "Film.IdTypeFilm = TypeFilm.IdTypeFilm AND DataStartFilm > now() + INTERVAL 15 MINUTE AND BusySeat < 160",
+            "Seance.IdSeance, Seance.NrRoom, Seance.DataStartFilm, Seance.DataEndFilm, ".
             "Film.IdFilm, Film.TitleFilm, Film.TimeFilm, Film.DataRelease, Film.PosterFilm, ".
             "Directory.NameDirectory, TypeFilm.NameTypeFilm");
 
@@ -42,7 +42,7 @@ class ListSeance extends Roster
     {
         require_once "Seance.php";
         return new Seance($row['IdSeance'], $this->setFilmToSeance($row), $row['NrRoom'], $row['DataStartFilm'],
-            $row['DataEndFilm'], $row['BusySeat']);
+            $row['DataEndFilm']);
     }
 
     private function setFilmToSeance($row)

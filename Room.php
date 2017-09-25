@@ -10,7 +10,6 @@ class Room
 {
     private $listVertical;
     private $listHorizontal;
-    static private $quantitySeat = 0;
 
     public function __construct()
     {
@@ -50,15 +49,5 @@ class Room
     public function getListHorizontal()
     {
         return $this->listHorizontal;
-    }
-
-    static public function setLimitSeatHall()
-    {
-        self::$quantitySeat++;
-    }
-
-    static public function getLimitSeatHall()
-    {
-        return self::$quantitySeat;
     }
 }
