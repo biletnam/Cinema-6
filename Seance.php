@@ -173,8 +173,8 @@ class Seance
     }
     private function definitionButton()
     {
-        return '<div class="button"><form><input type="hidden" value="1" id="idSeance"><input type="submit" value="Wybierz miejsce" '.
-        'id="submit" onclick=""></form></div>';
+        return '<div class="button"><form method="post" action="choseSeat.php"><input type="hidden" value="'.$this->getIdSeance()
+            .'" name="idSeance"><input type="submit" value="Wybierz miejsce" id="submit"></form></div>';
     }
     private function definitionDivClear()
     {

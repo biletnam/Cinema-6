@@ -11,7 +11,7 @@ class ListReservation extends Roster
     private $base;
     private $idSeance;
 
-    public function __construct($idSeance = 1)
+    public function __construct($idSeance)
     {
         parent::__construct();
         $this->idSeance = $idSeance;

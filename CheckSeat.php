@@ -21,13 +21,17 @@ class CheckSeat
             $add = new AddBooking();
 
             $add->AddSeat($idSeance, $idUser, $seat);
+
+            $_SESSION['goodSeat'] = "Rezerwacja miejsca na seans";
+            header('Location: index.php');
+            exit();
         }
         else
         {
             $_SESSION['errorSeat'] = "To miejsce jest już zajęte";
+            header('Location: choseSeat.php');
+            exit();
         }
-        header('Location: index.php');
-        exit();
     }
 
     private function check($checkSeat)
@@ -44,9 +48,8 @@ class CheckSeat
             {
                 return false;
             }
-            return true;
         }
-
+        return true;
     }
 }
 

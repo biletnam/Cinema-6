@@ -8,6 +8,12 @@
     </head>
     <body>
     <?php
+        session_start();
+        if(isset($_SESSION['goodSeat']))
+        {
+            echo $_SESSION['goodSeat'];
+            unset($_SESSION['goodSeat']);
+        }
         require_once "Roster.php";
         require_once "ListSeance.php";
         require_once "Seance.php";
