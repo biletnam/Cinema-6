@@ -1,17 +1,25 @@
-var hand
+var hand = null;
 
-function seance(handTmp) {
-    if(handTmp != null)
+function seance(handTmp)
+{
+    if(hand != null)
     {
-        handTmp.style.backgroundColor = '#FFFFFF';
+        hand.style.backgroundColor = '#FFFFFF';
     }
 
+    if(hand == handTmp)
+    {
+        hand.style.backgroundColor = '#FFFFFF';
+    }
+    else
+    {
+        handTmp.style.backgroundColor = '#DDDDDD';
+    }
     hand = handTmp;
-    hand.style.backgroundColor = '#DDDDDD';
 
     setFocus();
 }
-
-function setFocus() {
+function setFocus()
+{
     document.getElementById('submit').focus();
 }

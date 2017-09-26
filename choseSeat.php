@@ -77,6 +77,5 @@
         }
         ?>
         <script type="text/javascript" src="script/changeColorReservation.js"></script>
-        <script type="text/javascript" src="script/focusChoseSeance.js"></script>
     </body>
 </html>

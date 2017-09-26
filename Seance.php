@@ -107,7 +107,7 @@ class Seance
 
     public function __toString()
     {
-        return '<div class="seance" onclick="seance(this)">'.$this->definitionPosterFilm().$this->definitionFilm().
+        return '<div class="seance" onclick="seance(this);">'.$this->definitionPosterFilm().$this->definitionFilm().
             $this->definitionButton().$this->definitionDivClear().'</div>';
     }
 
