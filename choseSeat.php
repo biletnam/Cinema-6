@@ -33,7 +33,6 @@
             $roomCinema->generateHorizontal();
             $list = new ListReservation($_SESSION['idSeance']);
             unset($_POST['idSeance']);
-
             $list->setList();
 
             foreach ($roomCinema->getListVertical() as $y)
@@ -52,12 +51,13 @@
                     $tmp = $y . $x;
                     $free = 'onclick="changeColorSeatSit(this);"';
                     $disabled = "";
-                    foreach ($list->getList() as $seat)
+                    foreach ($list->getList() as $number => $seat )
                     {
                         if ($tmp == $seat)
                         {
                             $free = 'style="background-color: #FF0000; cursor: default;"';
                             $disabled = "disabled";
+                            $list->removeElementList($number);
                         }
                     }
                     echo '<label class="seat" ' . $free . ' for="' . $tmp . '">'
@@ -66,7 +66,7 @@
                 }
                 echo $column . '<div style="clear: both;"></div>';
             }
-             ?>
+            ?>
         <input type="submit" value="Rezerwacja">
         </form>
         <?php

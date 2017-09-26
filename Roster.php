@@ -26,5 +26,10 @@ abstract class Roster
     {
         return $this->listReservation;
     }
+
+    public function removeElementList($number)
+    {
+        unset($this->listReservation[$number]);
+    }
 }
 ?>
