@@ -27,5 +27,6 @@
 
         ?>
         <script type="text/javascript" src="script/focusChoseSeance.js"></script>
+        <script type="text/javascript" src="script/sendChoseSeat.js"></script>
     </body>
 </html>

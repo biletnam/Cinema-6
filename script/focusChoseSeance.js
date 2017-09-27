@@ -22,6 +22,5 @@ function seance(handTmp)
 function setFocus()
 {
     var id = 'submit' + hand.id;
-    //console.log(id);
     document.getElementById(id).focus();
 }

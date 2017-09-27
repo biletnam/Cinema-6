@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(!isset($_POST['idSeance']))
+    if(!isset($_GET['idSeance']))
     {
         header('Location: index.php');
         exit();
@@ -26,12 +26,11 @@
             require_once "Room.php";
             require_once "Roster.php";
             require_once "ListReservation.php";
-            $_SESSION['idSeance'] = $_POST['idSeance'];
             $block = array(5, 13);
             $roomCinema = new Room();
             $roomCinema->generateVertical();
             $roomCinema->generateHorizontal();
-            $list = new ListReservation($_SESSION['idSeance']);
+            $list = new ListReservation($_GET['idSeance']);
             unset($_POST['idSeance']);
             $list->setList();
 
