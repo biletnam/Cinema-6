@@ -49,6 +49,7 @@ abstract class Base
         }
         catch (Exception $e)
         {
+			echo 'Wystąpił problem z baza danych';
             return false;
         }
     }

@@ -28,14 +28,17 @@ class ListSeance extends Roster
             "Film.IdFilm, Film.TitleFilm, Film.TimeFilm, Film.DataRelease, Film.PosterFilm, ".
             "Directory.NameDirectory, TypeFilm.NameTypeFilm");
 
-        if($query->num_rows > 0)
-        {
-            while ($line = $query->fetch_assoc())
-            {
-                $this->addElementList($this->setSeanceToList($line));
-            }
-        }
-        $this->base->closeBase();
+		if($query != false)
+		{
+		    if($query->num_rows > 0)
+		    {
+		        while ($line = $query->fetch_assoc())
+		        {
+		            $this->addElementList($this->setSeanceToList($line));
+		        }
+		    }
+		    $this->base->closeBase();
+		}
     }
 
     private function setSeanceToList($row)
