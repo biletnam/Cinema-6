@@ -17,9 +17,11 @@ function seance(handTmp)
     }
     hand = handTmp;
 
-    setFocus();
+    setFocus(hand);
 }
 function setFocus()
 {
-    document.getElementById('submit').focus();
+    var id = 'submit' + hand.id;
+    //console.log(id);
+    document.getElementById(id).focus();
 }

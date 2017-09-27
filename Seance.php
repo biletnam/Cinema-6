@@ -107,7 +107,7 @@ class Seance
 
     public function __toString()
     {
-        return '<div class="seance" onclick="seance(this);">'.$this->definitionPosterFilm().$this->definitionFilm().
+        return '<div class="seance" onclick="seance(this);" id="'.$this->getIdSeance().'">'.$this->definitionPosterFilm().$this->definitionFilm().
             $this->definitionButton().$this->definitionDivClear().'</div>';
     }
 
@@ -174,7 +174,7 @@ class Seance
     private function definitionButton()
     {
         return '<div class="button"><form method="post" action="choseSeat.php"><input type="hidden" value="'.$this->getIdSeance()
-            .'" name="idSeance"><input type="submit" value="Wybierz miejsce" id="submit"></form></div>';
+            .'" name="idSeance"><input type="submit" value="Wybierz miejsce" id="submit'.$this->getIdSeance().'"></form></div>';
     }
     private function definitionDivClear()
     {
