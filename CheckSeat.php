@@ -8,13 +8,9 @@
 
 class CheckSeat
 {
-    public function __construct()
-    {
-        session_start();
-    }
-
     public function addReservation($idSeance, $idUser, $seat)
     {
+//        echo $idSeance." ".$idUser." ".$seat."<br>";
         if($this->check($seat))
         {
             require_once "AddBooking.php";
@@ -23,8 +19,6 @@ class CheckSeat
             $add->AddSeat($idSeance, $idUser, $seat);
 
             $_SESSION['goodSeat'] = "Rezerwacja miejsca na seans";
-            header('Location: index.php');
-            exit();
         }
         else
         {

@@ -6,15 +6,23 @@
  * Time: 19:40
  */
     session_start();
-    if((!isset($_POST['seatSit'])) | (!isset($_SESSION['idSeance'])))
+    if(!isset($_SESSION['idSeance']))
     {
-        header('location: choseSeat.php');
+        header('location: index.php');
         exit();
     }
-
+    if (empty($_POST['seatSit']))
+    {
+        header('Location: choseSeat.php?'.$_SESSION['idSeance']);
+    }
     require_once "CheckSeat.php";
     $book = new CheckSeat();
-    $book->addReservation($_SESSION['idSeance'], 2, $_POST['seatSit']);
 
+    foreach ($_POST['seatSit'] as $item)
+    {
+        $book->addReservation($_SESSION['idSeance'], 2, $item);
+    }
     unset($_POST['seatSit']);
+
+    header('Location: index.php');
 ?>

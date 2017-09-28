@@ -12,7 +12,7 @@
     background-color: #42EEF4;
 }
 
-input[type=radio]
+input[type=checkbox]
 {
     display: none;
 }

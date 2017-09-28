@@ -60,8 +60,7 @@
                         }
                     }
                     echo '<label class="seat" ' . $free . ' for="' . $tmp . '">'
-                        . $x . '</label><input type="radio" name="seatSit" id="' . $tmp . '" value="' .$tmp
-                        .'" ' . $disabled . '>';
+                        . $x . '</label><input type="checkbox" name="seatSit[]" id="'.$tmp .'" value="'.$tmp.'" '.$disabled.'>';
                 }
                 echo $column . '<div style="clear: both;"></div>';
             }
