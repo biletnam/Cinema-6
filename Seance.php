@@ -173,7 +173,7 @@ class Seance
     }
     private function definitionButton()
     {
-        return '<div class="button"><input type="submit" onclick="send(this)" value="Zarezerwój miejsca"  id="'.$this->getIdSeance().
+        return '<div class="button"><input type="submit" onclick="send(this)" value="Zarezerwuj miejsca"  id="'.$this->getIdSeance().
             '"></div>';
     }
     private function definitionDivClear()
