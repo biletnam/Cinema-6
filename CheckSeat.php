@@ -10,8 +10,7 @@ class CheckSeat
 {
     public function addReservation($idSeance, $idUser, $seat)
     {
-//        echo $idSeance." ".$idUser." ".$seat."<br>";
-        if($this->check($seat))
+        if($this->check($seat, $idSeance))
         {
             require_once "AddBooking.php";
             $add = new AddBooking();
@@ -28,12 +27,12 @@ class CheckSeat
         }
     }
 
-    private function check($checkSeat)
+    private function check($checkSeat, $idSeance)
     {
         require_once "Roster.php";
         require_once "ListReservation.php";
 
-        $list = new ListReservation();
+        $list = new ListReservation($idSeance);
         $list->setList();
 
         foreach ($list->getList() as $item)

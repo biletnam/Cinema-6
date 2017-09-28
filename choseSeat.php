@@ -48,7 +48,7 @@
                         }
                     }
                     $tmp = $y . $x;
-                    $free = 'onclick="changeColorSeatSit(this);"';
+                    $free = 'onclick="changeColorSeatSit(this, '.$tmp.');"';
                     $disabled = "";
                     foreach ($list->getList() as $number => $seat )
                     {
