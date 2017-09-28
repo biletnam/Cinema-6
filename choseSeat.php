@@ -28,10 +28,10 @@
             require_once "ListReservation.php";
             $block = array(5, 13);
             $roomCinema = new Room();
+            $_SESSION['idSeance'] = $_GET['idSeance'];
             $roomCinema->generateVertical();
             $roomCinema->generateHorizontal();
-            $list = new ListReservation($_GET['idSeance']);
-            unset($_POST['idSeance']);
+            $list = new ListReservation($_SESSION['idSeance']);
             $list->setList();
 
             foreach ($roomCinema->getListVertical() as $y)
