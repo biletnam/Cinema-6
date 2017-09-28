@@ -13,7 +13,7 @@
     }
     if (empty($_POST['seatSit']))
     {
-        header('Location: choseSeat.php?'.$_SESSION['idSeance']);
+        header('Location: choseSeat.php?idSeance='.$_SESSION['idSeance']);
     }
     require_once "CheckSeat.php";
     $book = new CheckSeat();
