@@ -113,8 +113,19 @@ class Seance
 
     private function definitionPosterFilm()
     {
-        return '<div class="poster"><img src="img/'.$this->getFilm()->getIdFilm().'.'.$this->getFilm()->getFilmPoster() .
-            '"></div>';
+        return '<div class="poster"><img src="img/'.$this->posterURL().'" alt="" ></div>';
+    }
+
+    private function posterURL()
+    {
+        if($this->getFilm()->getFilmPoster() != '')
+        {
+            return $this->getFilm()->getIdFilm().'.'.$this->getFilm()->getFilmPoster();
+        }
+        else
+        {
+            return '0.png';
+        }
     }
 
     private function definitionFilm()

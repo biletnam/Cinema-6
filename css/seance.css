@@ -1,7 +1,11 @@
+#cointerner
+{
+    width: 72%;
+}
+
 .seance
 {
     border: 1px solid #000000;
-    width: 70%;
     margin: 1%;
 }
 
@@ -9,11 +13,14 @@
 {
     float: left;
     margin: 1%;
+    width: 100px;
 }
 
 .poster > img
 {
     height: 100px;
+    display: block;
+    margin: auto;
 }
 
 .film
@@ -49,4 +56,19 @@
     float: right;
     margin: 2%;
     margin-top: 5%;
+}
+
+#left
+{
+    display: inline-block;
+    text-align: right;
+    margin: 1%;
+    width: 48%;
+}
+
+#right
+{
+    display: inline-block;
+    text-align: left;
+    width: 48%;
 }
