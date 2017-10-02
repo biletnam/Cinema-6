@@ -14,8 +14,13 @@ class Login
 
     public function __construct($login, $pass)
     {
-        $this->login = $login;
-        $this->pass = $pass;
+        $this->login = $this->securityData($login);
+        $this->pass = $this->securityData($pass);
+    }
+
+    private function securityData($data)
+    {
+        return htmlentities($data, ENT_QUOTES, 'UTF-8');
     }
 
     public function log_in()
