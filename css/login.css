@@ -1,0 +1,28 @@
+#cointernerSeance
+{
+    float: left;
+}
+
+#formLogin
+{
+    float: left;
+    margin: 2%;
+}
+
+input[name=login]
+{
+    margin: 5%;
+    display: block;
+}
+
+input[name=pass]
+{
+    margin: 5%;
+    display: block;
+}
+
+input[type=submit]
+{
+    display: block;
+    margin: auto;
+}

@@ -12,7 +12,7 @@ class Select extends Base
         parent::__construct();
     }
 
-    public function sqlCode($where, $when, $what = "*")
+    public function sqlCode($where, $when, $what)
     {
         return "SELECT $what FROM $where WHERE $when";
     }

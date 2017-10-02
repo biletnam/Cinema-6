@@ -33,7 +33,7 @@ abstract class Base
         }
     }
 
-    public function query($where, $when, $what)
+    public function query($where, $when, $what = "*")
     {
         $sql = $this->sqlCode($where, $when, $what);
 
