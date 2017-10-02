@@ -48,10 +48,10 @@
                 echo '</div>';
                 if(isset($_SESSION['user']))
                 {
-                    require_once 'Person.php';
-                    require_once 'User.php';
-                    $tmp = unserialize($_SESSION['user']);
-                    echo '<div id="menuHead">Witaj '.$tmp->getDignity().'!</div>';
+                    require_once "Menu.php";
+
+                    $menu = new Menu();
+                    echo '<div id="menuHead">'.$menu->genereteHeader().'</div>';
                 }
                 else
                 {

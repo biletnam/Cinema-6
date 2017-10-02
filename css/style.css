@@ -1,3 +1,13 @@
+body
+{
+    margin: 0;
+}
+
+form
+{
+    margin: 1%;
+}
+
 .seat
 {
     float: left;
@@ -15,6 +25,11 @@
 input[type=checkbox]
 {
     display: none;
+}
+
+input[type=submit]
+{
+    margin: 1%;
 }
 
 .seat :hover {
