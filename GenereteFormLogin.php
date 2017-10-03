@@ -31,7 +31,6 @@ class GenereteFormLogin
 
     private function inputError()
     {
-        session_start();
         if (isset($_SESSION['error_log']))
         {
             $tmp = $_SESSION['error_log'];

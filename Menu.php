@@ -12,7 +12,6 @@ class Menu
 
     public function __construct()
     {
-        session_start();
         require_once "ListHtml.php";
         $this->menu = new ListHtml('ol');
     }

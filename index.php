@@ -59,7 +59,6 @@
                     $form = new GenereteFormLogin();
                     echo $form->generateFormLogin();
                 }
-//                unset($_SESSION['user']);
             ?>
             <div style="clear:both;"></div>
         </div>
