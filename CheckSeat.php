@@ -10,21 +10,47 @@ class CheckSeat
 {
     public function addReservation($idSeance, $idUser, $seat)
     {
-        if($this->check($seat, $idSeance))
+        session_start();
+        $arrayErrorSeat = $this->addSeat($idSeance, $idUser, $seat);
+        if(empty($arrayErrorSeat))
         {
-            require_once "AddBooking.php";
-            $add = new AddBooking();
-
-            $add->AddSeat($idSeance, $idUser, $seat);
-
-            $_SESSION['goodSeat'] = "Rezerwacja miejsca na seans";
+            $_SESSION['goodSeat'] = "Wszystkie miejsca na seans zarezerowane poprawnie";
+            header('Location: index.php');
         }
         else
         {
-            $_SESSION['errorSeat'] = "To miejsce jest już zajęte";
-            header('Location: choseSeat.php');
-            exit();
+            $tmpMessage = "Te miejsce nie udało się zarezerwować:";
+
+            foreach ($arrayErrorSeat as $item)
+            {
+                $tmpMessage = $tmpMessage.' '.$item;
+            }
+            $_SESSION['errorSeat'] = $tmpMessage;
+            header("Location: choseSeat.php?idSeance=$idSeance");
         }
+    }
+
+    private function addSeat($idSeance, $idUser, $seat)
+    {
+        $errorSeat = array();
+
+        sleep(10);
+        foreach ($seat as $item)
+        {
+            if($this->check($item, $idSeance))
+            {
+                require_once "AddBooking.php";
+                $add = new AddBooking();
+
+                $add->AddSeat($idSeance, $idUser, $item);
+            }
+            else
+            {
+                array_push($errorSeat, $item);
+            }
+        }
+
+        return $errorSeat;
     }
 
     private function check($checkSeat, $idSeance)

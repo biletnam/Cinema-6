@@ -1,0 +1,20 @@
+#conteiner
+{
+    margin: 1%;
+}
+
+.input
+{
+    margin: 10px;
+}
+
+input
+{
+    margin: 1%;
+    margin-bottom: 0;
+}
+
+input[type=submit]
+{
+    margin-left: 4%;
+}

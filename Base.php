@@ -43,13 +43,13 @@ abstract class Base
 
             if(!$query)
             {
-                throw new Exception();
+                throw new Exception($this->Base->error);
             }
             return $query;
         }
         catch (Exception $e)
         {
-			echo 'Wystąpił problem z baza danych';
+			echo 'Wystąpił problem z baza danych'.$e;
             return false;
         }
     }

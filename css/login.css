@@ -9,15 +9,10 @@
     margin: 2%;
 }
 
-input[name=login]
+input[type=text],
+    [type=password]
 {
-    margin: 5%;
-    display: block;
-}
-
-input[name=pass]
-{
-    margin: 5%;
+    margin: 10px;
     display: block;
 }
 
