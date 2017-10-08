@@ -55,9 +55,9 @@
                 }
                 else
                 {
-                    require_once "GenereteFormLogin.php";
-                    $form = new GenereteFormLogin();
-                    echo $form->generateFormLogin();
+                    require_once "GenereteForm.php";
+                    $form = new GenereteForm();
+                    echo $form->generateForm();
                 }
             ?>
             <div style="clear:both;"></div>

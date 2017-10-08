@@ -6,18 +6,25 @@
 #formLogin
 {
     float: left;
+    width: 20%;
     margin: 2%;
+    margin-top: 0.5%;
 }
 
 input[type=text],
     [type=password]
 {
-    margin: 10px;
+    margin: 10px auto;
     display: block;
 }
 
 input[type=submit]
 {
-    display: block;
+    margin-right: 3%;
+}
+
+#conteinerButton
+{
+    width: 91%;
     margin: auto;
 }

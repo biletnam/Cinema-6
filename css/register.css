@@ -1,6 +1,6 @@
 #conteiner
 {
-    margin: 1%;
+    margin: 2%;
 }
 
 .input
@@ -10,11 +10,18 @@
 
 input
 {
+    display: block;
     margin: 1%;
     margin-bottom: 0;
 }
 
 input[type=submit]
 {
-    margin-left: 4%;
+    margin-left: 3%;
+}
+
+input[type=checkbox]
+{
+    margin-right: 0.5%;
+    display: inline-block;
 }
