@@ -10,8 +10,32 @@ class GenerteRegister extends GenereteForm
 {
     public function generateForm()
     {
-        return '<div id="conteiner"><form method="post" action="#">'.$this->inputLogin().$this->inputPassword().
-            $this->inputRepeatPassowrd().$this->inputEmail().$this->inputRule().$this->inputSubmit("Zarejestruj się").'</form></div>';
+        session_start();
+        return '<div id="conteiner"><form method="post" action="#">'.$this->inputLogin().$this->errorLogin().$this->inputPassword().
+            $this->errorPassword().$this->inputRepeatPassowrd().$this->inputEmail().$this->inputRule().
+            $this->inputSubmit("Zarejestruj się").'</form></div>';
+    }
+
+    private function errorLogin()
+    {
+        $tmpCode = '';
+        if(isset($_SESSION['errorLogin']))
+        {
+            $tmpCode = $_SESSION['errorLogin'];
+            unset($_SESSION['errorLogin']);
+        }
+        return $tmpCode;
+    }
+
+    private function errorPassword()
+    {
+        $tmpCode = '';
+        if(isset($_SESSION['errorPass']))
+        {
+            $tmpCode = $_SESSION['errorPass'];
+            unset($_SESSION['errorPass']);
+        }
+        return $tmpCode;
     }
 
     private function inputRepeatPassowrd()
@@ -21,11 +45,23 @@ class GenerteRegister extends GenereteForm
 
     private function inputEmail()
     {
-        return '<input type="email" name="email" placeholder="E-mail">';
+        $tmpCode = '<input type="email" name="email" placeholder="E-mail">';
+        if(isset($_SESSION['errorEmail']))
+        {
+            $tmpCode = $tmpCode.$_SESSION['errorEmail'];
+            unset($_SESSION['errorEmail']);
+        }
+        return $tmpCode;
     }
 
     private function inputRule()
     {
-        return '<label><input type="checkbox" name="rule"><a href="regulamin.pdf" target="_blank">Akceptuje regulamin</a></label>';
+        $tmpCode = '<label><input type="checkbox" name="rule"><a href="regulamin.pdf" target="_blank">Akceptuje regulamin</a></label>';
+        if(isset($_SESSION['errorRule']))
+        {
+            $tmpCode = $tmpCode.$_SESSION['errorRule'];
+            unset($_SESSION['errorRule']);
+        }
+        return $tmpCode;
     }
 }

@@ -1,3 +1,19 @@
+<?php
+    if(isset($_POST['login']))
+    {
+        require_once "CheckDataForRegister.php";
+        $check = new CheckDataForRegister();
+        $rule = 'c';
+        if(isset($_POST['rule']))
+        {
+            $rule = $_POST['rule'];
+        }
+        if($check->check($_POST['login'], $_POST['pass'], $_POST['repeatPass'], $_POST['email'], $rule))
+        {
+            header('Location: cos.php');
+        }
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>

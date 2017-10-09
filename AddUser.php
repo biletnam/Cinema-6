@@ -8,8 +8,8 @@
 
 class AddUser
 {
-    private $email;
-    private $dignity;
+    protected $email;
+    protected $dignity;
 
     public function __construct($email, $dignity)
     {
