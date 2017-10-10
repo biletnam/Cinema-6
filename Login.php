@@ -15,7 +15,7 @@ class Login
     public function __construct($login, $pass)
     {
         $this->login = $this->securityData($login);
-        $this->pass = $this->securityData($pass);
+        $this->pass = $pass;
     }
 
     private function securityData($data)
@@ -28,15 +28,22 @@ class Login
         session_start();
         require_once "Base.php";
         require_once "Select.php";
+        require_once "Person.php";
+        require_once "User.php";
         $this->base = new Select();
 
-        $query = $this->base->query("User","Login = '$this->login' AND Pass = '$this->pass'");
+        $query = $this->base->query("User","Login = '$this->login'");
         if($query->num_rows > 0)
         {
-            require_once "Person.php";
-            require_once "User.php";
             $tmpUser = new User($query->fetch_assoc());
-            $_SESSION['user'] = serialize($tmpUser);
+            if($this->checkHash($tmpUser->getPassword()))
+            {
+                $_SESSION['user'] = serialize($tmpUser);
+            }
+            else
+            {
+                $_SESSION['error_log'] = '<div class="error">Błędny login  hasło</div>';
+            }
         }
         else
         {
@@ -45,6 +52,11 @@ class Login
 
         $this->base->closeBase();
         header('Location: index.php');
+    }
+
+    private function checkHash($passwordHash)
+    {
+        return password_verify($this->pass, $passwordHash);
     }
 }
 ?>

@@ -5,12 +5,11 @@
  * Date: 9/30/17
  * Time: 10:27 PM
  */
-    if(!isset($_POST['login']))
+    if((!isset($_POST['login'])) | ($_POST['login'] == ''))
     {
         header('Location: index.php');
-        exit;
+        exit();
     }
-
     $login = $_POST['login'];
     $pass = $_POST['pass'];
 
