@@ -8,6 +8,7 @@
 
 abstract class Person
 {
+    private $id;
     private $nick;
     private $password;
     private $email;
@@ -15,10 +16,19 @@ abstract class Person
 
     protected function __construct($row)
     {
+        $this->id = $row['IdUser'];
         $this->nick = $row['Login'];
         $this->password = $row['Pass'];
         $this->email = $row['E-mail'];
         $this->dignity = $row['NameSurname'];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**

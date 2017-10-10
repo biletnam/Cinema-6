@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     if(!isset($_SESSION['idSeance']))
     {
         header('location: index.php');
@@ -14,6 +13,17 @@
     }else if(isset($_POST['seatSit']))
     {
         $_SESSION['seatSit'] = $_POST['seatSit'];
+    }
+
+    if(isset($_SESSION['user']))
+    {
+        require_once "Person.php";
+        require_once "User.php";
+        $user = unserialize($_SESSION['user']);
+        require_once "CheckSeat.php";
+        $book = new CheckSeat();
+
+        $book->addReservation($_SESSION['idSeance'], $user->getId(),$_SESSION['seatSit']);
     }
 
     if(isset($_POST['email']))

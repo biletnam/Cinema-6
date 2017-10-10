@@ -33,8 +33,7 @@ class CheckSeat
     private function addSeat($idSeance, $idUser, $seat)
     {
         $errorSeat = array();
-
-        sleep(10);
+        
         foreach ($seat as $item)
         {
             if($this->check($item, $idSeance))
