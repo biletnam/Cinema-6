@@ -8,9 +8,15 @@
         {
             $rule = $_POST['rule'];
         }
+        session_start();
         if($check->check($_POST['login'], $_POST['pass'], $_POST['repeatPass'], $_POST['email'], $rule))
         {
-            header('Location: cos.php');
+            require_once "AddUser.php";
+            require_once "RegisterUser.php";
+            $register = new RegisterUser($_POST['login'], $_POST['pass'], $_POST['email'], $_POST['dignity']);
+
+            $register->add();
+            header('Location: goodRegister.php');
         }
     }
 ?>

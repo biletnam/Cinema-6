@@ -25,7 +25,6 @@ class ValidateEmail extends Validate
         $emailB = filter_var($email, FILTER_SANITIZE_EMAIL);
         if((filter_var($emailB, FILTER_VALIDATE_EMAIL) == false) | ($email != $emailB))
         {
-            session_start();
             $_SESSION['errorEmail'] = 'Podany e-mail jest błędny!';
 
             return true;
@@ -42,7 +41,6 @@ class ValidateEmail extends Validate
 
         if($query->num_rows > 0)
         {
-            session_start();
             $_SESSION['errorEmail'] = 'Taki e-mail istnieje. Zaloguj się';
             return true;
         }

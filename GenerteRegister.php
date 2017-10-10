@@ -10,9 +10,8 @@ class GenerteRegister extends GenereteForm
 {
     public function generateForm()
     {
-        session_start();
         return '<div id="conteiner"><form method="post" action="#">'.$this->inputLogin().$this->errorLogin().$this->inputPassword().
-            $this->errorPassword().$this->inputRepeatPassowrd().$this->inputEmail().$this->inputRule().
+            $this->errorPassword().$this->inputRepeatPassowrd().$this->inputEmail().$this->inputDignity().$this->inputRule().
             $this->inputSubmit("Zarejestruj się").'</form></div>';
     }
 
@@ -52,6 +51,11 @@ class GenerteRegister extends GenereteForm
             unset($_SESSION['errorEmail']);
         }
         return $tmpCode;
+    }
+
+    private function inputDignity()
+    {
+        return '<input type="text" name="dignity" placeholder="Godność">';
     }
 
     private function inputRule()

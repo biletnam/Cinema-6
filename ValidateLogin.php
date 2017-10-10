@@ -24,7 +24,6 @@ class ValidateLogin extends Validate
     {
         if((strlen($login) < 3) | (strlen($login) > 10))
         {
-            session_start();
             $_SESSION['errorLogin'] = 'Login powinen zawierać od 3 do 10 znaków';
             return true;
         }
@@ -42,7 +41,6 @@ class ValidateLogin extends Validate
         }
         else
         {
-            session_start();
             $_SESSION['errorLogin'] = 'Login może zawierać tylko znaki alfanumeryczne';
             return true;
         }
@@ -58,7 +56,6 @@ class ValidateLogin extends Validate
 
         if($query->num_rows > 0)
         {
-            session_start();
             $_SESSION['errorLogin'] = 'Taki login istnieje.';
             return true;
         }

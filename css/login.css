@@ -18,9 +18,11 @@ input[type=text],
     display: block;
 }
 
-input[type=submit]
+input[type=submit],
+    [type=button]
 {
-    margin-right: 3%;
+    display: block;
+    margin: 1% auto;
 }
 
 #conteinerButton

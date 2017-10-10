@@ -31,7 +31,6 @@ class ValidatePassword extends Validate
     {
         if(strlen($pass) < 8)
         {
-            session_start();
             $_SESSION['errorPass'] = 'Hasło powinno zawirać min 8 znaków';
             return true;
         }
@@ -41,7 +40,6 @@ class ValidatePassword extends Validate
     {
         if($pass != $this->repeatPass)
         {
-            session_start();
             $_SESSION['errorPass'] = 'Hasła powinny być takie same.';
             return true;
         }

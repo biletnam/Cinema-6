@@ -60,7 +60,6 @@ class CheckDataForRegister
     {
         if($rule != 'on')
         {
-            session_start();
             $_SESSION['errorRule'] = 'Akceptuj regulamin';
             return false;
         }
