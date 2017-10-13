@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/history.css">
         <link rel="stylesheet" href="css/menu.css">
+        <link rel="stylesheet" href="fontello/css/fontello.css">
     </head>
     <body>
         <?php
@@ -23,20 +24,31 @@
             $list = new HistoryReservation();
             $menu = new Menu();
 
+            $tmpPage = null;
+            if(isset($_GET['page']))
+            {
+                $tmpPage = $_GET['page'];
+                $list->setList($tmpPage);
+            }
+            else
+            {
+                $list->setList();
+            }
+
             echo '<div id="cointernerSeance">';
-            $list->setList();
             foreach ($list->getList() as $item)
             {
                 echo $item;
             }
 
-        if($list->getRowsCount() > 20)
-        {
-            require_once "ButtonPage.php";
-            $button = new ButtonPage();
-            $button->getButton($listSeance->getCountRows(), $tmpPage);
-        }
-        echo '</div>'.$menu->genereteHeader();
+            if($list->getCountRows() > 20)
+            {
+                require_once "ButtonPage.php";
+                $button = new ButtonPage(20);
+                $button->getButton($list->getCountRows(), $tmpPage);
+            }
+
+            echo '</div>'.$menu->genereteHeader();
         ?>
         <div style="clear: both;"></div>
     </body>

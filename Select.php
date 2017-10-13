@@ -17,3 +17,4 @@ class Select extends Base
         return "SELECT $what FROM $where WHERE $when";
     }
 }
+?>

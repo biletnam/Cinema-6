@@ -42,7 +42,7 @@
                 if($listSeance->getCountRows() > 10)
                 {
                     require_once "ButtonPage.php";
-                    $button = new ButtonPage();
+                    $button = new ButtonPage(10);
                     $button->getButton($listSeance->getCountRows(), $tmpPage);
                 }
                 echo '</div>';

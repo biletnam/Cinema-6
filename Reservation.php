@@ -16,10 +16,9 @@ class Reservation
     public function __construct($row)
     {
         require_once "Film.php";
-
         $this->setFilm(new Film($row['IdFilm'], $row['TitleFilm'], null, null, null, null,
             $row['PosterFilm']));
-        $this->dataStart = DateTime::createFromFormat('Y-m-d H:i:s', $row['DataStartFilm']);
+        $this->dataStart = DateTime::createFromFormat('H:i d-m-Y', $row['DataStartFilm']);
         $this->seat = $row['FreeSeat'];
         $this->nrRoom = $row['NrRoom'];
     }
@@ -90,13 +89,8 @@ class Reservation
 
     private function describeReservation()
     {
-        return '<div class="describeReservation">'.$this->dataFormatSeance().' w sali '.$this->nrRoom.
-            ' miejsce '.$this->seat.'</div>';
-    }
-
-    private function dataFormatSeance()
-    {
-        return $this->dataStart->format('H:i d-m-Y');
+        return '<div class="describeReservation">'.$this->dataStart.' w sali '.$this->nrRoom
+            .' miejsce '.$this->seat.'</div>';
     }
 }
 ?>
