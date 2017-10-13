@@ -1,0 +1,39 @@
+#cointernerSeance
+{
+    width: 50%;
+}
+
+.element
+{
+    border: 1px #000000 solid;
+    margin: 1%;
+    padding: 1%;
+}
+
+.poster
+{
+    float: left;
+    margin-right: 1%;
+}
+
+.poster > img
+{
+    width: 50px;
+}
+
+.describe
+{
+    float: left;
+}
+
+.titleFilm
+{
+    font-size: 120%;
+}
+
+.describeReservation
+{
+    margin: 1%;
+    font-size: 80%;
+    text-align: center;
+}

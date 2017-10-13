@@ -51,7 +51,7 @@
                     require_once "Menu.php";
 
                     $menu = new Menu();
-                    echo '<div id="menuHead">'.$menu->genereteHeader().'</div>';
+                    echo $menu->genereteHeader();
                 }
                 else
                 {
