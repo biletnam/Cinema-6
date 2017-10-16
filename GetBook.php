@@ -15,6 +15,8 @@
         $_SESSION['seatSit'] = $_POST['seatSit'];
     }
 
+    require_once "RememberUserData.php";
+
     if(isset($_SESSION['user']))
     {
         require_once "Person.php";
@@ -51,6 +53,11 @@
 
             unset($_SESSION['seatSit']);
         }
+        else
+        {
+            $tmpData = new RememberUserData(null, null, null, $email, $_POST['dignity'], null);
+            $_SESSION['rememberUserData'] = serialize($tmpData);
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -71,13 +78,25 @@
                 }
                 echo '</div><div>Podaj dane potrzebne do rezerwacji.</div>';
                 echo '<form action="#" method="post" id="formBook">
-                    <div class="input"><input type="text" name="email" placeholder="email">';
+                    <div class="input"><input type="text" name="email" placeholder="email" ';
+                if(isset($_SESSION['rememberUserData']))
+                {
+                    $tmp = unserialize($_SESSION['rememberUserData']);
+                    echo 'value="'.$tmp->getEmail().'"';
+                }
+                echo '>';
                 if(isset($_SESSION['errorEmail']))
                 {
                     echo $_SESSION['errorEmail'];
                     unset($_SESSION['errorEmail']);
                 }
-                echo '</div><div class="input"><input type="text" name="dignity" placeholder="Godność"></div>'
+                echo '</div><div class="input"><input type="text" name="dignity" placeholder="Godność" ';
+                if(isset($_SESSION['rememberUserData']))
+                {
+                    $tmp = unserialize($_SESSION['rememberUserData']);
+                    echo 'value="'.$tmp->getDignity().'"';
+                }
+                echo'></div>'
                         .'<input type="submit" value="Zarezerwuj"></form>';
             ?>
         </div>

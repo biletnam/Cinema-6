@@ -8,6 +8,11 @@
 
 class GenerteRegister extends GenereteForm
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     public function generateForm()
     {
         return '<div id="conteiner"><form method="post" action="#">'.$this->inputLogin().$this->errorLogin().$this->inputPassword().
@@ -39,12 +44,23 @@ class GenerteRegister extends GenereteForm
 
     private function inputRepeatPassowrd()
     {
-        return '<input type="password" name="repeatPass" placeholder="Powtórz hasło">';
+        $tmpCode = '<input type="password" name="repeatPass" placeholder="Powtórz hasło" ';
+        if($this->rememberData != null)
+        {
+            $tmpCode .= 'value="'.$this->rememberData->getRepeatPass().'"';
+        }
+        return $tmpCode.'>';
     }
 
     private function inputEmail()
     {
-        $tmpCode = '<input type="email" name="email" placeholder="E-mail">';
+        $tmpCode = '<input type="email" name="email" placeholder="E-mail" ';
+        if($this->rememberData != null)
+        {
+            $tmpCode .= 'value="'.$this->rememberData->getEmail().'"';
+        }
+        $tmpCode .= '>';
+
         if(isset($_SESSION['errorEmail']))
         {
             $tmpCode = $tmpCode.$_SESSION['errorEmail'];
@@ -55,12 +71,22 @@ class GenerteRegister extends GenereteForm
 
     private function inputDignity()
     {
-        return '<input type="text" name="dignity" placeholder="Godność">';
+        $tmpCode = '<input type="text" name="dignity" placeholder="Godność" ';
+        if($this->rememberData != null)
+        {
+            $tmpCode .= 'value="'.$this->rememberData->getDignity().'"';
+        }
+        return $tmpCode.'>';
     }
 
     private function inputRule()
     {
-        $tmpCode = '<label><input type="checkbox" name="rule"><a href="regulamin.pdf" target="_blank">Akceptuje regulamin</a></label>';
+        $tmpCode = '<label><input type="checkbox" name="rule" ';
+        if($this->rememberData != null)
+        {
+            $tmpCode .= 'checked';
+        }
+        $tmpCode .= '><a href="regulamin.pdf" target="_blank">Akceptuje regulamin</a></label>';
         if(isset($_SESSION['errorRule']))
         {
             $tmpCode = $tmpCode.$_SESSION['errorRule'];

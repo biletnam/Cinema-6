@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(isset($_SESSION['rememberData']))
+    {
+        unset($_SESSION['rememberData']);
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +20,6 @@
         <div id="cointerner">
             <?php
                 echo '<div id="cointernerSeance">';
-                session_start();
                 if(isset($_SESSION['goodSeat']))
                 {
                     echo $_SESSION['goodSeat'];

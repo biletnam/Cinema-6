@@ -8,6 +8,17 @@
 
 class GenereteForm
 {
+    protected $rememberData = null;
+
+    public function __construct()
+    {
+        if (isset($_SESSION['rememberData']))
+        {
+            require_once "RememberUserData.php";
+            $this->rememberData = unserialize($_SESSION['rememberData']);
+        }
+    }
+
     public function generateForm()
     {
         return '<div id="formLogin"><form method="post" action="log_in.php">'.$this->inputLogin().$this->inputPassword().
@@ -16,12 +27,23 @@ class GenereteForm
 
     protected function inputLogin()
     {
-        return '<input type="text" name="login" placeholder="Login">';
+        $tmpCode = '<input type="text" name="login" placeholder="Login" ';
+        if($this->rememberData != null)
+        {
+            $tmpCode = $tmpCode.'value="'.$this->rememberData->getLogin().'"';
+        }
+
+        return $tmpCode.'>';
     }
 
     protected function inputPassword()
     {
-        return '<input type="password" name="pass" placeholder="Hasło">';
+        $tmpCode = '<input type="password" name="pass" placeholder="Hasło" ';
+        if($this->rememberData != null)
+        {
+            $tmpCode .= 'value="'.$this->rememberData->getPass().'"';
+        }
+        return $tmpCode.'>';
     }
 
     private function conteinerButton($value)

@@ -3,7 +3,7 @@
     {
         require_once "CheckDataForRegister.php";
         $check = new CheckDataForRegister();
-        $rule = 'c';
+        $rule = null;
         if(isset($_POST['rule']))
         {
             $rule = $_POST['rule'];
@@ -17,6 +17,13 @@
 
             $register->add();
             header('Location: goodRegister.php');
+        }
+        else
+        {
+            require_once "RememberUserData.php";
+            $tmpData = new RememberUserData($_POST['login'], $_POST['pass'], $_POST['repeatPass'], $_POST['email'],
+                $_POST['dignity'], $rule);
+            $_SESSION['rememberData'] = serialize($tmpData);
         }
     }
 ?>
