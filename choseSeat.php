@@ -65,7 +65,7 @@
                 echo $column . '<div style="clear: both;"></div>';
             }
             ?>
-        <input type="submit" value="Rezerwacja">
+            <input type="submit" value="Rezerwacja">
         </form>
         <?php
         if(isset($_SESSION['errorSeat']))
