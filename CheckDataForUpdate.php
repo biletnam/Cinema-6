@@ -19,6 +19,7 @@ class CheckDataForUpdate
     {
         require_once "Validate.php";
         $flags = true;
+
         if(!$this->checkEmail($email))
         {
             $flags = false;

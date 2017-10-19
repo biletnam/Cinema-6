@@ -6,7 +6,7 @@
  * Time: 21:28
  */
 
-class GenereteUpdate extends GenereteRegister
+class GenereteUpdateData extends GenereteRegister
 {
     public function __construct()
     {

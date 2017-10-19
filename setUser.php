@@ -37,13 +37,15 @@
         <meta charset="UTF-8">
         <title>Edycja danych użytkownika</title>
 
+        <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/register.css">
+        <link rel="stylesheet" href="css/menu.css">
     </head>
     <body>
         <?php
             require_once "GenereteForm.php";
             require_once "GenereteRegister.php";
-            require_once "GenereteUpdate.php";
+            require_once "GenereteUpdateData.php";
 
             if(isset($_SESSION['goodUpdate']))
             {
@@ -51,8 +53,14 @@
                 unset($_SESSION['goodUpdate']);
             }
 
-            $code = new GenereteUpdate();
+            $code = new GenereteUpdateData();
             echo $code->generateForm();
+
+            require_once "Menu.php";
+
+            $menu = new Menu();
+            echo $menu->genereteHeader();
         ?>
+        <div style="clear: both;"></div>
     </body>
 </html>
