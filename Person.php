@@ -19,7 +19,7 @@ abstract class Person
         $this->id = $row['IdUser'];
         $this->nick = $row['Login'];
         $this->password = $row['Pass'];
-        $this->email = $row['E-mail'];
+        $this->email = $row['Email'];
         $this->dignity = $row['NameSurname'];
     }
 
@@ -61,5 +61,11 @@ abstract class Person
     public function getDignity()
     {
         return $this->dignity;
+    }
+
+    public function updateUser($email, $dignity)
+    {
+        $this->email = $email;
+        $this->dignity = $dignity;
     }
 }

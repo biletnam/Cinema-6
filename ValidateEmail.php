@@ -8,6 +8,13 @@
 
 class ValidateEmail extends Validate
 {
+    private $id = null;
+
+    public function __construct($id = 0)
+    {
+            $this->id = $id;
+    }
+
     protected function checkData($data)
     {
         if(($this->ErrorEmail($data)) | ($this->noUniqueEmail($data)))
@@ -35,17 +42,20 @@ class ValidateEmail extends Validate
     {
         require_once "Base.php";
         require_once "Select.php";
-
         $base = new Select();
-        $query = $base->query("User", "Email = '$email'");
+        $flags = false;
+
+        $query = $base->query("User", "Email = '$email' AND IdUser != $this->id", 'Email');
 
         if($query->num_rows > 0)
         {
-            $_SESSION['errorEmail'] = 'Taki e-mail istnieje. Zaloguj się';
-            return true;
+            $_SESSION['errorEmail'] = 'Taki e-mail istnieje.';
+            $flags = true;
         }
 
+        $query->free_result();
         $base->closeBase();
+        return $flags;
     }
 }
 ?>

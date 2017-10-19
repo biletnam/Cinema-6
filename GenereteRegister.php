@@ -6,7 +6,7 @@
  * Time: 18:44
  */
 
-class GenerteRegister extends GenereteForm
+class GenereteRegister extends GenereteForm
 {
     public function __construct()
     {
@@ -31,7 +31,7 @@ class GenerteRegister extends GenereteForm
         return $tmpCode;
     }
 
-    private function errorPassword()
+    protected function errorPassword()
     {
         $tmpCode = '';
         if(isset($_SESSION['errorPass']))
@@ -42,7 +42,7 @@ class GenerteRegister extends GenereteForm
         return $tmpCode;
     }
 
-    private function inputRepeatPassowrd()
+    protected function inputRepeatPassowrd()
     {
         $tmpCode = '<input type="password" name="repeatPass" placeholder="Powtórz hasło" ';
         if($this->rememberData != null)
@@ -52,7 +52,7 @@ class GenerteRegister extends GenereteForm
         return $tmpCode.'>';
     }
 
-    private function inputEmail()
+    protected function inputEmail()
     {
         $tmpCode = '<input type="email" name="email" placeholder="E-mail" ';
         if($this->rememberData != null)
@@ -69,7 +69,7 @@ class GenerteRegister extends GenereteForm
         return $tmpCode;
     }
 
-    private function inputDignity()
+    protected function inputDignity()
     {
         $tmpCode = '<input type="text" name="dignity" placeholder="Godność" ';
         if($this->rememberData != null)
@@ -79,7 +79,7 @@ class GenerteRegister extends GenereteForm
         return $tmpCode.'>';
     }
 
-    private function inputRule()
+    protected function inputRule()
     {
         $tmpCode = '<label><input type="checkbox" name="rule" ';
         if($this->rememberData != null)

@@ -37,9 +37,9 @@
     <body>
     <?php
         require_once "GenereteForm.php";
-        require_once "GenerteRegister.php";
+        require_once "GenereteRegister.php";
 
-        $registerCode = new GenerteRegister();
+        $registerCode = new GenereteRegister();
         echo $registerCode->generateForm();
     ?>
     </body>
