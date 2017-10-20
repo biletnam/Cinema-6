@@ -6,7 +6,6 @@
         exit();
     }
 
-    require_once "Person.php";
     require_once "User.php";
     $user = unserialize($_SESSION['user']);
 
@@ -33,7 +32,9 @@
         <meta charset="UTF-8">
         <title>Edycja hasła użytkownika</title>
 
-        <link rel="stylesheet"href="css/register.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/register.css">
+        <link rel="stylesheet" href="css/menu.css">
     </head>
     <body>
         <div id="conteiner">
@@ -65,5 +66,11 @@
                 <input type="submit" value="Zmień hasło">
             </form>
         </div>
+        <?php
+            require_once "Menu.php";
+            $menu = new Menu();
+
+            echo $menu->genereteHeader();
+        ?>
     </body>
 </html>
