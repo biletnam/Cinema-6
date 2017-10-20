@@ -19,7 +19,6 @@
 
     if(isset($_SESSION['user']))
     {
-        require_once "Person.php";
         require_once "User.php";
         $user = unserialize($_SESSION['user']);
         require_once "CheckSeat.php";

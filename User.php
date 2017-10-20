@@ -6,7 +6,7 @@
  * Time: 4:41 PM
  */
 
-abstract class Person
+class User
 {
     private $id;
     private $nick;
@@ -14,7 +14,7 @@ abstract class Person
     private $email;
     private $dignity;
 
-    protected function __construct($row)
+    public function __construct($row)
     {
         $this->id = $row['IdUser'];
         $this->nick = $row['Login'];

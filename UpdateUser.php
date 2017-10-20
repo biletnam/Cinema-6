@@ -35,7 +35,6 @@ class UpdateUser
 
     private function changeUser()
     {
-        require_once "Person.php";
         require_once "User.php";
 
         $tmpUser = unserialize($_SESSION['user']);

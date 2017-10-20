@@ -18,17 +18,20 @@ class Menu
 
     public function genereteHeader()
     {
-        require_once 'Person.php';
+        require_once 'User.php';
         require_once 'User.php';
 
         $tmpUser = unserialize($_SESSION['user']);
         $this->menu->elementList('Witaj '.$tmpUser->getDignity().'!'.$this->subMenu());
-        return $this->menu->getList();
+        return '<div id="menuHead">'.$this->menu->getList().'</div>';
     }
 
     private function subMenu()
     {
         $tmpMenu = new ListHtml('ul');
+        $tmpMenu->elementList('<a href="historyReservation.php">Lista rezerwacji</a>');
+        $tmpMenu->elementList('<a href="setUser.php">Zmień dane</a>');
+        $tmpMenu->elementList('<a href="setPass.php">Zmień hasło</a>');
         $tmpMenu->elementList('<a href="disconnect.php">Wyloguj się</a>');
 
         return $tmpMenu->getList();

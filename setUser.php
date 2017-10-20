@@ -5,7 +5,6 @@
         header('Location: index.php');
         exit();
     }
-    require_once "Person.php";
     require_once "User.php";
     $User = unserialize($_SESSION['user']);
     require_once "RememberUserData.php";

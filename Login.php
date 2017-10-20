@@ -28,15 +28,16 @@ class Login
         session_start();
         require_once "Base.php";
         require_once "Select.php";
-        require_once "Person.php";
         require_once "User.php";
         $this->base = new Select();
 
         $query = $this->base->query("User","Login = '$this->login'");
         if($query->num_rows > 0)
         {
-            $tmpUser = new User($query->fetch_assoc());
-            if($this->checkHash($tmpUser->getPassword()))
+            $row = $query->fetch_assoc();
+            $tmpUser = $this->checkPart($row);
+
+            if($this->checkHash($row['Pass']))
             {
                 $_SESSION['user'] = serialize($tmpUser);
             }
@@ -50,8 +51,21 @@ class Login
             $_SESSION['error_log'] = '<div class="error">Błędny login lub hasło</div>';
         }
 
+        $query->free_result();
         $this->base->closeBase();
         header('Location: index.php');
+    }
+
+    private function checkPart($row)
+    {
+        if($row['Part'] == '1')
+        {
+            return new User($row);
+        }
+        else
+        {
+            return new User($row);
+        }
     }
 
     private function checkHash($passwordHash)
