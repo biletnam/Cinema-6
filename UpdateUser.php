@@ -36,6 +36,7 @@ class UpdateUser
     private function changeUser()
     {
         require_once "User.php";
+        require_once "Employee.php";
 
         $tmpUser = unserialize($_SESSION['user']);
         $tmpUser->updateUser($this->email, $this->dignity);

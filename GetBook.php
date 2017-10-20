@@ -20,6 +20,7 @@
     if(isset($_SESSION['user']))
     {
         require_once "User.php";
+        require_once "Employee.php";
         $user = unserialize($_SESSION['user']);
         require_once "CheckSeat.php";
         $book = new CheckSeat();
@@ -95,8 +96,7 @@
                     $tmp = unserialize($_SESSION['rememberUserData']);
                     echo 'value="'.$tmp->getDignity().'"';
                 }
-                echo'></div>'
-                        .'<input type="submit" value="Zarezerwuj"></form>';
+                echo'></div><input type="submit" value="Zarezerwuj"></form>';
             ?>
         </div>
     </body>

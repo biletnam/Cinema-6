@@ -19,7 +19,7 @@ class Menu
     public function genereteHeader()
     {
         require_once 'User.php';
-        require_once 'User.php';
+        require_once "Employee.php";
 
         $tmpUser = unserialize($_SESSION['user']);
         $this->menu->elementList('Witaj '.$tmpUser->getDignity().'!'.$this->subMenu());

@@ -15,6 +15,7 @@ class HistoryReservation extends Roster
     {
         parent::__construct();
         require_once "User.php";
+        require_once "Employee.php";
         $user = unserialize($_SESSION['user']);
         $this->idUser = $user->getId();
     }

@@ -6,6 +6,7 @@
         exit();
     }
     require_once "User.php";
+    require_once "Employee.php";
     $User = unserialize($_SESSION['user']);
     require_once "RememberUserData.php";
     $tmpData = new RememberUserData(null, null,

@@ -60,7 +60,8 @@ class Login
     {
         if($row['Part'] == '1')
         {
-            return new User($row);
+            require_once "Employee.php";
+            return new Employee($row);
         }
         else
         {

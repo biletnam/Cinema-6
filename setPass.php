@@ -7,6 +7,7 @@
     }
 
     require_once "User.php";
+    require_once "Employee.php";
     $user = unserialize($_SESSION['user']);
 
     if(isset($_POST['oldPass']))

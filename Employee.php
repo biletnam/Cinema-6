@@ -6,7 +6,11 @@
  * Time: 12:56
  */
 
-class Employee
+class Employee extends User
 {
-
+    public function __construct($row)
+    {
+        parent::__construct($row);
+    }
 }
+?>

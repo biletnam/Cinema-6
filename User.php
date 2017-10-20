@@ -18,7 +18,6 @@ class User
     {
         $this->id = $row['IdUser'];
         $this->nick = $row['Login'];
-        $this->password = $row['Pass'];
         $this->email = $row['Email'];
         $this->dignity = $row['NameSurname'];
     }
@@ -37,14 +36,6 @@ class User
     public function getNick()
     {
         return $this->nick;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPassword()
-    {
-        return $this->password;
     }
 
     /**
