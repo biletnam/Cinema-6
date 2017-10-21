@@ -22,16 +22,26 @@ class RegisterUser extends AddUser
         return password_hash($pass, PASSWORD_DEFAULT);
     }
 
-    public function add()
+    public function add($part = 0)
     {
         require_once "Base.php";
         require_once "Insert.php";
         $base = new Insert();
 
-        $base->query('User', 'Login, Pass, Email, NameSurname',
-            "'$this->login', '$this->pass', '$this->email', '$this->dignity'");
+        $base->query('User', 'Login, Pass, Email, NameSurname, Part',
+            "'$this->login', '$this->pass', '$this->email', '$this->dignity', $part");
+
+        $this->cleanRememberData();
 
         $base->closeBase();
+    }
+
+    private function cleanRememberData()
+    {
+        if(isset($_SESSION['rememberData']))
+        {
+            unset($_SESSION['rememberData']);
+        }
     }
 }
 ?>

@@ -4,6 +4,7 @@
         require_once "CheckDataForRegister.php";
         $check = new CheckDataForRegister();
         $rule = null;
+
         if(isset($_POST['rule']))
         {
             $rule = $_POST['rule'];

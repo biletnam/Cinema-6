@@ -84,6 +84,7 @@ class GenereteRegister extends GenereteForm
         $tmpCode = '<label><input type="checkbox" name="rule" ';
         if($this->rememberData != null)
         {
+            if($this->rememberData->getRule() == 'on')
             $tmpCode .= 'checked';
         }
         $tmpCode .= '><a href="regulamin.pdf" target="_blank">Akceptuje regulamin</a></label>';

@@ -22,18 +22,25 @@ class Menu
         require_once "Employee.php";
 
         $tmpUser = unserialize($_SESSION['user']);
-        $this->menu->elementList('Witaj '.$tmpUser->getDignity().'!'.$this->subMenu());
+        $this->menu->elementList('Witaj '.$tmpUser->getDignity().'!'.$this->subMenu(get_class($tmpUser)));
         return '<div id="menuHead">'.$this->menu->getList().'</div>';
     }
 
-    private function subMenu()
+    private function subMenu($nameClass)
     {
         $tmpMenu = new ListHtml('ul');
         $tmpMenu->elementList('<a href="historyReservation.php">Lista rezerwacji</a>');
         $tmpMenu->elementList('<a href="setUser.php">Zmień dane</a>');
         $tmpMenu->elementList('<a href="setPass.php">Zmień hasło</a>');
+        $tmpMenu->elementList($this->employeeTask($nameClass));
         $tmpMenu->elementList('<a href="disconnect.php">Wyloguj się</a>');
 
         return $tmpMenu->getList();
+    }
+
+    private function employeeTask($nameClass)
+    {
+        if($nameClass == 'Employee')
+        return '<a href="addEmployee.php">Dodaj pracownika</a>';
     }
 }

@@ -21,7 +21,8 @@ class RememberUserData
         $this->pass = $pass;
         $this->repeatPass = $repeatPass;
         $this->email = $email;
-        $this->dignity = $dignity; 
+        $this->dignity = $dignity;
+        $this->rule = $rule;
     }
 
     /**
