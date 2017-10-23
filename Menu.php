@@ -22,8 +22,8 @@ class Menu
         require_once "Employee.php";
 
         $tmpUser = unserialize($_SESSION['user']);
-        $this->menu->elementList('Witaj '.$tmpUser->getDignity().'!'.$this->subMenu(get_class($tmpUser)));
-        return '<div id="menuHead">'.$this->menu->getList().'</div>';
+        $this->menu->elementList('Witaj ' . $tmpUser->getDignity() . '!' . $this->subMenu(get_class($tmpUser)));
+        return '<div id="menuHead">' . $this->menu->getList() . '</div>';
     }
 
     private function subMenu($nameClass)
@@ -32,15 +32,19 @@ class Menu
         $tmpMenu->elementList('<a href="historyReservation.php">Lista rezerwacji</a>');
         $tmpMenu->elementList('<a href="setUser.php">Zmień dane</a>');
         $tmpMenu->elementList('<a href="setPass.php">Zmień hasło</a>');
-        $tmpMenu->elementList($this->employeeTask($nameClass));
+        $tmpMenu->elementList($this->employeeTask($nameClass, '<a href="addEmployee.php">Dodaj pracownika</a>'));
+        $tmpMenu->elementList($this->employeeTask($nameClass, '<a href="addTypeFilm.php">Dodaj gatunek</a>'));
+        $tmpMenu->elementList($this->employeeTask($nameClass, '<a href="addDirectory.php">Dodaj reżysera</a>'));
         $tmpMenu->elementList('<a href="disconnect.php">Wyloguj się</a>');
 
         return $tmpMenu->getList();
     }
 
-    private function employeeTask($nameClass)
+    private function employeeTask($nameClass, $value)
     {
-        if($nameClass == 'Employee')
-        return '<a href="addEmployee.php">Dodaj pracownika</a>';
+        if ($nameClass == 'Employee')
+        {
+            return $value;
+        }
     }
 }
