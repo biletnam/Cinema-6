@@ -1,42 +1,54 @@
 <?php
     session_start();
-    if(isset($_POST['login']))
+    try
     {
+        if(!isset($_SESSION['user']))
+        {
+            throw new Exception();
+        }
+
         require_once 'User.php';
         require_once 'Employee.php';
         $user = unserialize($_SESSION['user']);
 
-        if(get_class($user) == 'Employee')
+        if(get_class($user) != 'Employee')
         {
-            require_once 'CheckDataForRegister.php';
-            $check = new CheckDataForRegister();
-            $rule = null;
-            if(isset($_POST['rule']))
-            {
-                $rule = $_POST['rule'];
-            }
-            if($check->check($_POST['login'], $_POST['pass'], $_POST['repeatPass'], $_POST['email'], $rule))
-            {
-                require_once "AddUser.php";
-                require_once "RegisterUser.php";
-                $register = new RegisterUser($_POST['login'], $_POST['pass'], $_POST['email'], $_POST['dignity']);
+            throw new Exception();
+        }
 
-                $register->add(1);
-                $_SESSION['goodSeat'] = 'Nowy pracownik właśnie dołaczył do zespołu';
-                header('Location: index.php');
-            }
-            else
-            {
-                require_once "RememberUserData.php";
-                $tmpData = new RememberUserData($_POST['login'], $_POST['pass'], $_POST['repeatPass'], $_POST['email'],
-                    $_POST['dignity'], $rule);
-                $_SESSION['rememberData'] = serialize($tmpData);
-            }
+
+    }catch(Exception $exception)
+    {
+        header('Location: index.php');
+        exit();
+    }
+
+
+    if(isset($_POST['login']))
+    {
+        require_once 'CheckDataForRegister.php';
+        $check = new CheckDataForRegister();
+        $rule = null;
+        if(isset($_POST['rule']))
+        {
+            $rule = $_POST['rule'];
+        }
+        if($check->check($_POST['login'], $_POST['pass'], $_POST['repeatPass'], $_POST['email'], $rule))
+        {
+            require_once "AddUser.php";
+            require_once "RegisterUser.php";
+            $register = new RegisterUser($_POST['login'], $_POST['pass'], $_POST['email'], $_POST['dignity']);
+
+            $register->add(1);
+            $_SESSION['goodSeat'] = 'Nowy pracownik właśnie dołaczył do zespołu';
+            header('Location: index.php');
         }
         else
         {
-            header('Location: index.php');
-            exit();
+            require_once "RememberUserData.php";
+            $tmpData = new RememberUserData($_POST['login'], $_POST['pass'], $_POST['repeatPass'], $_POST['email'],
+            $_POST['dignity'], $rule);
+            $_SESSION['rememberData'] = serialize($tmpData);
         }
     }
 ?>
